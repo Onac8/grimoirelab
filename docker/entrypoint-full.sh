@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Start ElasticSearch, MariaDB and Kibana, wait for them to be listening,
 # and launch SirMordred with the options in the CMD line of the Dockerfile
@@ -44,6 +44,11 @@ until $(curl --output /dev/null --silent --head --fail http://127.0.0.1:5601); d
     sleep 2
 done
 echo "Kibiter started"
+
+# Start Grafana
+echo "Starting Grafana" 
+sudo chown -R service grafana-server start 
+echo "Grafana started"
 
 if [[ $RUN_MORDRED ]] && [[ $RUN_MORDRED = "NO" ]]; then
   echo

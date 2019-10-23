@@ -84,10 +84,10 @@ RUN wget https://dl.grafana.com/oss/release/${GRAF}_amd64.deb && \
     sudo dpkg -i ${GRAF}_amd64.deb && \
     rm ${GRAF}_amd64.deb
 
-RUN sudo service grafana-server start
-ADD docker/entrypoint-full.sh entrypoint.sh
+#RUN sudo service grafana-server start
+ADD docker/entrypoint-full.sh /entrypoint.sh
 USER root
-RUN chmod 777 entrypoint.sh
+RUN chmod 777 /entrypoint.sh
 #VOLUME /var/lib/elasticsearch
 
 # Entrypoint
